@@ -7,6 +7,7 @@ namespace PersonDataAPI.Models
 {
     public class Person
     {
+        public int PersonId { get; set; }
         public string Namn { get; set; }
         public string Email { get; set; }
     }
