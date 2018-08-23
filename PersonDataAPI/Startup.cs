@@ -11,7 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PersonDataAPI.Interfaces;
 using PersonDataAPI.Models;
+using PersonDataAPI.Respository;
 
 namespace PersonDataAPI
 {
@@ -28,7 +30,7 @@ namespace PersonDataAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+            services.AddTransient<IPersonRepository, PersonRepository>();
             services.AddDbContext<PersonDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PersonDatabase")));
         }
     
